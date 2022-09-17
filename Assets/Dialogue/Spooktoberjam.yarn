@@ -1,0 +1,146 @@
+﻿title: Start
+tags:
+---
+<<camera_look Background1>>
+ Deciding where to go to college is a huge choice, especially when the most prestigious ones are out of reach.
+ My grades weren't great, but I had nothing to lose by sending my application to pretty much every college I could find.  
+ Somehow, the only one that replied… was the most prestigious, the most exclusive- and the one I really did not want to go to… 
+ ****Freakaversity****
+ The campus is an old castle in the outskirts of the country. It's old and isolated- to tell the truth, I'm not even sure that they have electricity!
+ I don't even know why they appear in the listings, they never admit anyone and are so old fashioned!
+ My acceptance letter was written on old paper with ink, it even had a wax seal…
+ But, my grandpa always told me to never let an opportunity go to waste- and at this point, this was my only option…
+ <<jump EntranceScene>>
+===
+title: EntranceScene
+---
+You arrive at the castle entrance. The door is as big as they come, very old, and incredibly rusty.
+You knock on the door...
+And they open by themselves. A very strange lady appears...
+Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
+
+-> Give letter
+    Phoebe: Well, seems like everything's in order! Mister..? Miss?
+    Uhm...
+    Phoebe: Look at you, so nervous! I think I'll call you Casey, a nice name for a nice student. Come on in, I'll show you around!
+    <<jump Corridor1>>
+
+-> Back away slowly, this place gives you the creeps!
+    The woman sees the letter in your hand and snatches it from you. No turning back now…
+    Phoebe:Hmm, yes, this will do... Mister...? Miss?
+    Uhm...
+    Phoebe: Oh, relax! No need to be so formal, you can let yourself go here! You look like a Casey. Yes. Casey it is!
+        -> Yeah... sure
+            <<jump Corridor1>>
+        -> Formal?... Casey?...
+            Phoebe: You look so… Human.
+            Casey: Aren't we all human?
+            Phoebe looks perplexed, then bursts out laughing.
+            Phoebe: Good one!
+            <<jump Corridor1>>
+
+
+===
+title: Corridor1
+---
+Phoebe leads you up some stairs, through a big corridor/balcony. You feel the cold country breeze on your face- despite your unease, it feels refreshing,
+Phoebe: So, first things first, this is your room! You can leave your stuff there, we have a long tour ahead. This castle is so big, you can get lost walking in a straight line!
+You enter the room, it's a dorm with two beds. One side is a complete mess, the other a little too organized…
+-> Take the organized one
+    <<jump Taketheorganizedone>>
+-> Take the mess
+    <<jump Takethemess>>
+===
+title: Taketheorganizedone
+---
+    Phoebe: Glad you knew which one was yours! She proceeds to jump on her bed. Forgot to tell you, but we're roommates!!
+    Phoebe: Come on, hurry up! Leave your stuff there. I need to take you to the Principal's office so you can present yourself!!
+    <<jump DormScene1>>
+===
+title: Takethemess
+---
+<<declare $TakethemessVariable = false as bool>>
+<<set $TakethemessVariable to true>>
+    Phoebe: Hey you, stay away from there, that's MY mess!
+    She proceeds to jump on her bed.
+    Phoebe: Forgot to tell you, but we're roommates!!
+    Phoebe: Come on, don't look so frightened! Leave your stuff, I need to take you to the Principal's office so you can present yourself!!
+    <<jump DormScene1>>
+===
+
+title: DormScene1
+---
+-> Put your belongings in the dorm
+    Casey: What the hell did I get myself into? Surely Grandpa didn't want me to suffer through hell just for a college degree… 
+    Casey: Guess there's no turning back now- I better do what Phoebe says, I do NOT want to see her angry side
+    <<jump PrincipalsOffice1>>
+-> Make a run for the door, maybe you can still get out!
+    Phoebe makes a mad dash to the door, at speeds you didn't think were possible!
+    <<if $TakethemessVariable is true>>
+    She puts herself in the doorway, blocking the only exit while doing that monstery face again.
+    <<elseif $TakethemessVariable is false>>
+    She puts herself in the doorway, blocking the only exit while revealing a monstery face.
+    <<endif>>
+Phoebe: Where do you think you're going!? You can't walk around campus with all that stuff, so leave it! WE CAN'T BE LATE MEETING THE PRINCIPLE!!!!
+…You leave your stuff in the dorm.
+
+<<jump PrincipalsOffice1>>
+
+===
+title: PrincipalsOffice1
+---
+Phoebe leads you across the campus in record time, barely able to take in the architecture this time. 
+You come across a fancy door. Phoebe knocks on it, and once again it opens automatically.
+She grabs you by the arm and drags your inside.
+Phoebe: HEY PRINCIPAL, I GOT THE NEW STUDENT RIGHT HERE! Aren't they a cutie pie?
+The Principal looks up from his desk as you enter. 
+Principal: Thank you Phoebe, you must be…?
+You open your mouth to introduce yourself, but Phoebe beats you to it.
+Phoebe: Casey! Don't they look like a Casey?
+Casey: I guess I'm Casey now.
+Principle: Well, Casey, welcome to Freakiversity. Please, take a seat.
+
+-> Take a seat
+    You sit down sheepishly
+-> Make a run for it
+    You run to the door, but Phoebe is faster. She grabs you by the shoulders and forces you back to your seat. She's too strong to fight against, so you resign to your fate.
+
+Phoebe waits outside, leaving you alone with the Principle.
+Principal: "It's not every day we accept someone like you, Casey. We're trying to introduce a new policy, to be more open."
+->Thinking... What's with these freaks!!!!
+    You nod at his explanation, your head racing with thoughts.
+->Thinking... GOTTA RUN AWAY
+    You nod at his explanation, your head racing with thoughts.
+->Thinking... They really are way more educated than City people
+    You nod at his explanation, your head racing with thoughts.
+
+Principal: You may have noticed already, but the people here are… not what you're used to. 
+Principal: We have students with family lines tracing all the way back to the founding of our college
+Principal: Studying here just like their ancestors did 500 years ago.
+Principal: Accepting a student like yourself is an event that has been a long time coming- 
+Principal: I've done everything I can to ensure that you get the same college experience as all our other students.
+
+-> ...Are you all monsters?
+    Principal: Yes, I suppose your kind would call us 'monsters.' But, we're normal people, just like yourself. Just don't go around saying that word, we don't really like it.      
+-> Is it safe to leave me with Phoebe?
+    Principal: Hahaha, Phoebe is harmless- just incredibly enthusiastic. She volunteered to be your roommate, I'm sure she'll be more than happy to answer every question you might have.
+-> I'm honored, a little scared, but honored
+    Principal: Glad to hear it, you'll get used to life here in time.
+
+Principal: I see that you're interested in our Astrophysics course, it's one of our best. Professor May is really out of this world!
+
+-> Professor May?! The professor May teaches here?!
+    Principal: Indeed, she's one of ours. She's quite popular amongst students- as if a normal person would have those guitar skills!
+-> ...please tell me she's not an alien.
+    Principal: Don't worry, there's no aliens here. She's just eccentric.
+-> Can't wait to meet her!
+    Principal: I'm sure she can't wait to meet you, good luck with your studies
+
+Principle: Well, I think that takes care of your enrollment. Go back to Phoebe, I'm sure she'll give you a thorough tour around campus. You start classes tomorrow, best of luck!
+
+You thank the Principal and leave his office. You can see Phoebe waiting for you on one of the chairs outside. 
+She looked so calm and peaceful, but as soon as she saw you, she went right back to her excitable self.
+
+===
+
+
