@@ -22,6 +22,7 @@ You knock on the door...
 And they open by themselves. A very strange lady appears...
 <<change_background 2>>
 Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
+<<change_background -1 TL1>>
 
 -> Give letter
     Phoebe: Well, seems like everything's in order! Mister..? Miss?
