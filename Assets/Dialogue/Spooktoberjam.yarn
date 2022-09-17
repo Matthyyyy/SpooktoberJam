@@ -2,7 +2,7 @@
 tags:
 ---
 <<test_command>>
-<<change_background 1>>
+<<change_background 0>>
 // <<camera_look Background1>>
  Deciding where to go to college is a huge choice, especially when the most prestigious ones are out of reach.
  My grades weren't great, but I had nothing to lose by sending my application to pretty much every college I could find.  
@@ -16,12 +16,13 @@ tags:
 ===
 title: EntranceScene
 ---
+<<change_background 1>>
 You arrive at the castle entrance. The door is as big as they come, very old, and incredibly rusty.
-<<change_background 0>>
 You knock on the door...
 And they open by themselves. A very strange lady appears...
-<<change_background 2>>
+<<add_character 0>>
 Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
+<<add_character 1>>
 <<change_background -1 TL1>>
 
 -> Give letter
@@ -48,8 +49,10 @@ Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acc
 ===
 title: Corridor1
 ---
+<<change_background 2>>
 Phoebe leads you up some stairs, through a big corridor/balcony. You feel the cold country breeze on your face- despite your unease, it feels refreshing,
 Phoebe: So, first things first, this is your room! You can leave your stuff there, we have a long tour ahead. This castle is so big, you can get lost walking in a straight line!
+<<change_background 3>>
 You enter the room, it's a dorm with two beds. One side is a complete mess, the other a little too organized…
 -> Take the organized one
     <<jump Taketheorganizedone>>
@@ -94,6 +97,7 @@ Phoebe: Where do you think you're going!? You can't walk around campus with all 
 ===
 title: PrincipalsOffice1
 ---
+<<change_background 4>>
 Phoebe leads you across the campus in record time, barely able to take in the architecture this time. 
 You come across a fancy door. Phoebe knocks on it, and once again it opens automatically.
 She grabs you by the arm and drags your inside.
