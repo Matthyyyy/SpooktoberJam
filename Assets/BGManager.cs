@@ -35,6 +35,8 @@ public class BGManager : MonoBehaviour
         BGs[index].SetActive(true);
     }
 
+
+
     //[YarnCommand("change_background")]
     public static void CBTest(int x)
     {
