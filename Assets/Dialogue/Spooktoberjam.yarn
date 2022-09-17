@@ -20,9 +20,9 @@ title: EntranceScene
 You arrive at the castle entrance. The door is as big as they come, very old, and incredibly rusty.
 You knock on the door...
 And they open by themselves. A very strange lady appears...
-<<add_character 0>>
-Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
 <<add_character 1>>
+Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
+<<add_character 2>>
 <<change_background -1 TL1>>
 
 -> Give letter
@@ -49,6 +49,7 @@ Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acc
 ===
 title: Corridor1
 ---
+<<add_character 0>>
 <<change_background 2>>
 Phoebe leads you up some stairs, through a big corridor/balcony. You feel the cold country breeze on your face- despite your unease, it feels refreshing,
 Phoebe: So, first things first, this is your room! You can leave your stuff there, we have a long tour ahead. This castle is so big, you can get lost walking in a straight line!
