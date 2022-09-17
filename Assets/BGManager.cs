@@ -12,7 +12,8 @@ public class BGManager : MonoBehaviour
     public void Awake()
     {
         dialogueRunner.AddCommandHandler("test_command", testCommand);
-        dialogueRunner.AddCommandHandler<int>("change_background", changeBackground);
+        dialogueRunner.AddCommandHandler<int, string>("change_background", changeBackground);
+        //dialogueRunner.AddCommandHandler<string>("change_background", changeBackground);
     }
 
     // Update is called once per frame
@@ -25,6 +26,43 @@ public class BGManager : MonoBehaviour
     {
         Debug.Log("Hello world, I'm a functioning command");
     }
+    void changeBackground(int index = -1, string Test = "escapeHatch")
+    {
+        
+        if(index != -1 || Test != "escapeHatch")
+        {
+            Debug.Log("Something is hapeneing here.");
+            if (index > -1)
+            {
+                changeBackground(index);
+            }
+            else
+            {
+                changeBackground(Test);
+            }
+            return;
+        }
+        Debug.LogError("You're not supposed to be here.");
+        return;
+    }
+
+    void changeBackground(string Test)
+    {
+        Debug.Log("Hihi welcome to spooktober " + Test);
+        // Change background based on name
+        foreach(var item in BGs)
+        {
+            if(item.name == Test)
+            {
+                item.SetActive(true);
+            }
+            else
+            {
+                item.SetActive(false);
+            }
+        }
+    }
+
     void changeBackground(int index)
     {
         foreach(var item in BGs)
@@ -38,11 +76,12 @@ public class BGManager : MonoBehaviour
 
 
     //[YarnCommand("change_background")]
-    public static void CBTest(int x)
+    public void CBTest(int x)
     {
         Debug.Log("Hello world. change background test " + x);
         
     }
+
 
 
 

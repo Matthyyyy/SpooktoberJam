@@ -23,6 +23,8 @@ And they open by themselves. A very strange lady appears...
 <<add_character 0>>
 Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
 <<add_character 1>>
+<<change_background -1 TL1>>
+
 -> Give letter
     Phoebe: Well, seems like everything's in order! Mister..? Miss?
     Uhm...
