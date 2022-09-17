@@ -6,11 +6,13 @@ using Yarn.Unity;
 public class BGManager : MonoBehaviour
 {
     public DialogueRunner dialogueRunner;
+
+    public GameObject[] BGs;
     
     public void Awake()
     {
         dialogueRunner.AddCommandHandler("test_command", testCommand);
-        dialogueRunner.AddCommandHandler("change_background", changeBackground);
+        dialogueRunner.AddCommandHandler<int>("change_background", changeBackground);
     }
 
     // Update is called once per frame
@@ -23,8 +25,23 @@ public class BGManager : MonoBehaviour
     {
         Debug.Log("Hello world, I'm a functioning command");
     }
-    void changeBackground()
+    void changeBackground(int index)
     {
-        Debug.Log("Hihi welcome to spooktober");
+        foreach(var item in BGs)
+        {
+            item.SetActive(false);
+        }
+        Debug.Log("Hihi welcome to spooktober " + index );
+        BGs[index].SetActive(true);
     }
+
+    //[YarnCommand("change_background")]
+    public static void CBTest(int x)
+    {
+        Debug.Log("Hello world. change background test " + x);
+        
+    }
+
+
+
 }

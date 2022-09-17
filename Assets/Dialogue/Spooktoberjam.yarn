@@ -2,7 +2,7 @@
 tags:
 ---
 <<test_command>>
-<<change_background>>
+<<change_background 1>>
 // <<camera_look Background1>>
  Deciding where to go to college is a huge choice, especially when the most prestigious ones are out of reach.
  My grades weren't great, but I had nothing to lose by sending my application to pretty much every college I could find.  
@@ -17,8 +17,10 @@ tags:
 title: EntranceScene
 ---
 You arrive at the castle entrance. The door is as big as they come, very old, and incredibly rusty.
+<<change_background 0>>
 You knock on the door...
 And they open by themselves. A very strange lady appears...
+<<change_background 2>>
 Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
 
 -> Give letter
