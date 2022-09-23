@@ -2,8 +2,7 @@
 tags:
 ---
 <<test_command>>
-<<change_background 0>>
-<<fade_out>>
+<<change_background -1 CastleView>>
 // <<camera_look Background1>>
  Deciding where to go to college is a huge choice, especially when the most prestigious ones are out of reach.
  My grades weren't great, but I had nothing to lose by sending my application to pretty much every college I could find.  
@@ -17,44 +16,54 @@ tags:
 ===
 title: EntranceScene
 ---
-<<change_background 1>>
+<<change_background -1 Door>>
 You arrive at the castle entrance. The door is as big as they come, very old, and incredibly rusty.
 You knock on the door...
 And they open by themselves. A very strange lady appears...
-<<add_character 1>>
+<<add_character -1 PhoebeHappy>>
 Phoebe: Why, hello! Welcome to **Freakiversity**, I'm Phoebe. May I see your acceptance letter?
-<<add_character 2>>
-<<change_background -1 TL1>>
 
 -> Give letter
+    <<add_character -1 PhoebeNeutral>>
     Phoebe: Well, seems like everything's in order! Mister..? Miss?
     Uhm...
+    
+    <<add_character -1 PhoebeHappy>>
     Phoebe: Look at you, so nervous! I think I'll call you Casey, a nice name for a nice student. Come on in, I'll show you around!
     <<jump Corridor1>>
 
 -> Back away slowly, this place gives you the creeps!
+    <<add_character -1 PhoebeAnnoyed>>
     The woman sees the letter in your hand and snatches it from you. No turning back now…
+    <<add_character -1 PhoebeNeutral>>
     Phoebe:Hmm, yes, this will do... Mister...? Miss?
     Uhm...
+    
+    <<add_character -1 PhoebeHappy>>
     Phoebe: Oh, relax! No need to be so formal, you can let yourself go here! You look like a Casey. Yes. Casey it is!
         -> Yeah... sure
             <<jump Corridor1>>
         -> Formal?... Casey?...
             Phoebe: You look so… Human.
             Casey: Aren't we all human?
+            
+            <<add_character -1 PhoebeAnnoyed>>
             Phoebe looks perplexed, then bursts out laughing.
+            
+            <<add_character -1 PhoebeHappy>>
             Phoebe: Good one!
             <<jump Corridor1>>
-
-
 ===
 title: Corridor1
 ---
 <<add_character 0>>
-<<change_background 2>>
+<<play_song -1 WalkingAround>>
+<<change_background -1 CorridorWindows>>
 Phoebe leads you up some stairs, through a big corridor/balcony. You feel the cold country breeze on your face- despite your unease, it feels refreshing,
+<<add_character -1 PhoebeNeutral>>
 Phoebe: So, first things first, this is your room! You can leave your stuff there, we have a long tour ahead. This castle is so big, you can get lost walking in a straight line!
-<<change_background 3>>
+<<add_character 0>>
+<<change_background -1 Chambers>>
 You enter the room, it's a dorm with two beds. One side is a complete mess, the other a little too organized…
 -> Take the organized one
     <<jump Taketheorganizedone>>
@@ -63,6 +72,7 @@ You enter the room, it's a dorm with two beds. One side is a complete mess, the 
 ===
 title: Taketheorganizedone
 ---
+    <<add_character -1 PhoebeNeutral>>
     Phoebe: Glad you knew which one was yours! She proceeds to jump on her bed. Forgot to tell you, but we're roommates!!
     Phoebe: Come on, hurry up! Leave your stuff there. I need to take you to the Principal's office so you can present yourself!!
     <<jump DormScene1>>
@@ -71,8 +81,11 @@ title: Takethemess
 ---
 <<declare $TakethemessVariable = false as bool>>
 <<set $TakethemessVariable to true>>
+    <<add_character -1 PhoebeAngry>>
     Phoebe: Hey you, stay away from there, that's MY mess!
+    <<add_character 0>>
     She proceeds to jump on her bed.
+    <<add_character -1 PhoebeHappy>>
     Phoebe: Forgot to tell you, but we're roommates!!
     Phoebe: Come on, don't look so frightened! Leave your stuff, I need to take you to the Principal's office so you can present yourself!!
     <<jump DormScene1>>
@@ -81,17 +94,23 @@ title: Takethemess
 title: DormScene1
 ---
 -> Put your belongings in the dorm
+    <<add_character 0>>
     Casey: What the hell did I get myself into? Surely Grandpa didn't want me to suffer through hell just for a college degree… 
     Casey: Guess there's no turning back now- I better do what Phoebe says, I do NOT want to see her angry side
     <<jump PrincipalsOffice1>>
 -> Make a run for the door, maybe you can still get out!
+    <<add_character 0>>
     Phoebe makes a mad dash to the door, at speeds you didn't think were possible!
     <<if $TakethemessVariable is true>>
+    <<add_character -1 PhoebeAngry>>
     She puts herself in the doorway, blocking the only exit while doing that monstery face again.
     <<elseif $TakethemessVariable is false>>
+    <<add_character -1 PhoebeAngry>>
     She puts herself in the doorway, blocking the only exit while revealing a monstery face.
     <<endif>>
+<<add_character -1 PhoebeAnnoyed>>
 Phoebe: Where do you think you're going!? You can't walk around campus with all that stuff, so leave it! WE CAN'T BE LATE MEETING THE PRINCIPLE!!!!
+<<add_character 0>>
 …You leave your stuff in the dorm.
 
 <<jump PrincipalsOffice1>>
@@ -99,17 +118,24 @@ Phoebe: Where do you think you're going!? You can't walk around campus with all 
 ===
 title: PrincipalsOffice1
 ---
-<<change_background 4>>
+<<change_background -1 PrincipalsOffice>>
 Phoebe leads you across the campus in record time, barely able to take in the architecture this time. 
 You come across a fancy door. Phoebe knocks on it, and once again it opens automatically.
 She grabs you by the arm and drags your inside.
+<<add_character -1 PhoebeHappyRight>>
 Phoebe: HEY PRINCIPAL, I GOT THE NEW STUDENT RIGHT HERE! Aren't they a cutie pie?
+<<add_character -1 PrincipalNeutral>>
 The Principal looks up from his desk as you enter. 
+<<add_character -1 PrincipalHappy>>
 Principal: Thank you Phoebe, you must be…?
 You open your mouth to introduce yourself, but Phoebe beats you to it.
+<<add_character -1 PhoebeHappyRight>>
 Phoebe: Casey! Don't they look like a Casey?
+<<add_character 0>>
 Casey: I guess I'm Casey now.
-Principle: Well, Casey, welcome to Freakiversity. Please, take a seat.
+<<add_character -1 PrincipalHappy>>
+Principal: Well, Casey, welcome to Freakiversity. Please, take a seat.
+<<add_character 0>>
 
 -> Take a seat
     You sit down sheepishly
@@ -117,6 +143,7 @@ Principle: Well, Casey, welcome to Freakiversity. Please, take a seat.
     You run to the door, but Phoebe is faster. She grabs you by the shoulders and forces you back to your seat. She's too strong to fight against, so you resign to your fate.
 
 Phoebe waits outside, leaving you alone with the Principle.
+<<add_character -1 PrincipalNeutral>>
 Principal: "It's not every day we accept someone like you, Casey. We're trying to introduce a new policy, to be more open."
 ->Thinking... What's with these freaks!!!!
     You nod at his explanation, your head racing with thoughts.
@@ -129,6 +156,7 @@ Principal: You may have noticed already, but the people here are… not what you
 Principal: We have students with family lines tracing all the way back to the founding of our college
 Principal: Studying here just like their ancestors did 500 years ago.
 Principal: Accepting a student like yourself is an event that has been a long time coming- 
+<<add_character -1 PrincipalHappy>>
 Principal: I've done everything I can to ensure that you get the same college experience as all our other students.
 
 -> ...Are you all monsters?
@@ -146,12 +174,1093 @@ Principal: I see that you're interested in our Astrophysics course, it's one of 
     Principal: Don't worry, there's no aliens here. She's just eccentric.
 -> Can't wait to meet her!
     Principal: I'm sure she can't wait to meet you, good luck with your studies
-
-Principle: Well, I think that takes care of your enrollment. Go back to Phoebe, I'm sure she'll give you a thorough tour around campus. You start classes tomorrow, best of luck!
-
+<<add_character -1 PrincipalNeutral>>
+Principal: Well, I think that takes care of your enrollment. Go back to Phoebe, I'm sure she'll give you a thorough tour around campus. You start classes tomorrow, best of luck!
+<<add_character 0>>
+<<change_background 2>>
 You thank the Principal and leave his office. You can see Phoebe waiting for you on one of the chairs outside. 
 She looked so calm and peaceful, but as soon as she saw you, she went right back to her excitable self.
-
+<<add_character -1 PhoebeHappy>>
+Phoebe: "How did it go?! Isn't the Principal the best?" 
+Phoebe was right in your face, it seems that the concept of 'personal space' isn't one she understands…
+-> "Yeah they're pretty neat."
+    Phoebe: "Yeah!"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "Come on, we have a whole campus to see!"
+-> "He seemed way more educated than people in the city!"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "I always heard that city-slickers are the A word"
+    <<add_character -1 PhoebeHappy>>
+    Phoebe: "But you're quite the exception!"
+    Phoebe: "Come on, let's continue the tour!"
+-> "He told me that you'd give me a tour…"
+    Phoebe: "Aw YEAH!"
+<<add_character 0>>
+<<jump Library>>
 ===
+title: Library
+---
+<<change_background -1 Library>>
+Phoebe takes you on your tour, starting in the library.
+<<add_character -1 PhoebeNeutral>>
+Phoebe:"This is the library! It has literally anything you could ever need"
+Phoebe: "From Ramses III's manuscripts to all of King lyrics!"
+<<add_character -1 PhoebeHappy>>
+Phoebe: "Do you like King, right? They're the best!"
+Casey: "They rock!"
+<<add_character -1 PhoebeNeutral>>
+Phoebe: "I knew you were a smart one! So, up next..."
+<<jump Messhall1>>
+===
+title: Messhall1
+---
+<<change_background -1 Messhall>>
+<<add_character 0>>
+Phoebe takes you to the mess hall. There's no one in there, which seems odd.
+-> "Where is everyone?"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "They start tomorrow, I came early to welcome you in!"
+    <<add_character -1 PhoebeHappy>>
+    Phoebe: "It wasn't a problem because I already live here! Hahahaha"
+    Casey: "You live here?"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "Yes! I asked the principal if I could move into our dorm early"
+    <<add_character -1 PhoebeHappy>>
+    Phoebe: "And he had no problem with it! So cool!!!! I was so excited, still am!!!!"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "Come on, got to show you the classrooms now!"
+-> "Can we get a sandwich? I'm starving"
+    <<add_character -1 PhoebeAnnoyed>>
+    Phoebe: "No!! We don't have time!"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "You can eat all you want after we finish the tour!"
+-> "Please tell me they don't serve human flesh"
+    <<add_character -1 PhoebeHappy>>
+    Phoebe: "Hahaha, you're so silly! We're not like that, most of us are vegetarians anyway!!"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "Come on, got to show you the classrooms now!"
+<<jump Classroom>>
+===
+title: Classroom
+---
+<<change_background -1 Classroom>>
+<<add_character 0>>
+Phoebe takes you to the classrooms. They are massive, it feels so surreal!
+<<add_character -1 PhoebeHappy>>
+Phoebe: "This is where we start tomorrow roomie! We're in the same class!!"
 
+-> "Cool!"
+    <<jump Gotosleep>>
+-> "Are you gonna be able to sleep with all this excitement?"
+    Phoebe: "Not at all!!! But I rarely sleep anyway!"
+-> "Please tell me we'll have Professor May tomorrow?"
+    Phoebe: "Ha, no, I wish! We'll have the math teacher"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "I heard he's the A word!!!"
+<<jump Gotosleep>>
+===
+title: Gotosleep
+---
+<<add_character 0>>
+<<add_background -1 CastleView>>
+Phoebe's tour lasted hours! She had so many things to say about everything, but you could barely remember any of it.
+When she finally led you back to your dorms, you were so tired that you just fell onto your bed and slept.
+Contrary to what you expected, Phoebe didn't make a sound all night.
+When you woke up, she was quietly reading a book.
+<<add_background -1 Chambers>>
+You notice a tray of food on the bedside table- Phoebe has already eaten her half, but there's still a wonderful assortment of breakfast foods. 
+<<add_character -1 PhoebeHappy>>
+Phoebe: "Oh!! You're finally awake! I didn't know what you liked, so I just got everything!!!"
+Phoebe: "Hurry up and eat so we're not late to class!!!!!!"
+<<add_character 0>>
+You finish your breakfast and get dressed. Phoebe hands you your maths books and hurries you out the door. 
+She seems very keen to start her first day.
+<<add_background 2>>
+You walk through the corridors towards the maths classroom with Phoebe.
+<<jump mathclass>>
+===
+title: mathclass
+---
+<<add_background -1 Classroom>>
+The class is filled with a variety of different looking students- some looked human enough, while others made Phoebe's monstery face look friendly.
+Looking around, you see some students hugging each other as they catch up for the first time since their break
+Others, growling at each other in some kind of salute.
+<<add_character -1 PhoebeHappy>>
+Phoebe: So??!!! Are you nervoouuusss???!!!! I know I am!!!!!!
+-> "There's so many strange looking people, it's exciting!"
+    Phoebe: "Hey! Diversity is all we are about!"
+    <<add_character 0>>
+    She invites you to sit with her while she reads over her maths textbook.
+-> "It feels like I could die any minute now."
+    <<add_character 0>>
+    Phoebe simply laughs, and grabs you by the arm to sit next to her while you wait for class.
+-> "I never was that great at maths…"
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "Hahaha, come on, the teacher won't bite!!!"
+    <<add_character 0>>
+    You follow Phoebe and sit next to her, pulling out your textbook to see what you'll be learning.
 
+The maths teacher enters, and with a swing of his hand, everyone shuts up. 
+He is an insanely tall cyclops, with a little monocle he used to read attendance.
+He calls out your name... "Casey?"
+
+-> "Here."
+-> "That's not actually my name, it's-"
+    The teacher glares at you over his monocle. You realise it's pointless to argue, and just say "here."
+-> You just raise your hand, you don't want to draw attention to yourself.
+
+With the attendance marked, the teacher begins the class
+Once class begins, it doesn't stop. The teacher had written so many equations on the board, it didn't seem to end!
+Monsters seem to be very focused beings, as everyone else seemed to follow along just fine. You, on the other hand…
+
+-> Try to keep up
+    You keep up as much as you can, until a flying paper ball hits your back. You would think this was a high school thing- yet here you are, at college...
+-> Begin to daydream
+    You begin to daydream, thinking of a lovely world in which you ended up in a normal school, only for a flying paper ball to hit your back.
+    You wonder if this could get any worse…
+-> Drop it for today, you barely can keep up
+    You stop taking notes, slouching forward just in time for a flying paper ball to barely miss you. That was close!
+You grab the paper ball, and there's a message inside it...
+"Get the fuck out of our college before we MAKE you leave"
+You look back, there's lots of monsters, yet one of them, the most human looking...
+<<add_character -1 BayleyHappy>>
+smiles at you with yellowish fangs.
+<<add_character 0>>
+The expression was unnerving, to say the least.
+Phoebe didn't seem to notice, she was so focused, madly taking notes to keep up with the teacher.
+You try not to think about the note, or the group of monsters behind you, and try to pay attention for the rest of class.
+When class finally finished, you quickly packed up your books, anxious to leave.
+<<change_background -1 CorridorWindows>>
+Phoebe catches with you right after crossing the door
+<<add_character -1 PhoebeNeutral>>
+Phoebe: "Woooaaaah, you in a hurry to get somewhere???"
+Casey: "Something like that…"
+Phoebe: "Weeeeell, how did you find your first class?????"
+Her eye seems curious
+
+-> Show Phoebe the threatening note
+    <<add_character -1 PhoebeAnnoyed>>
+    You show Phoebe the note, gesturing to the monsters that threw it at you.
+    <<add_character -1 PhoebeAngry>>
+    Phoebe: "WHAT????? HE DID WHAAAATTT???? I'M GONNA GIVE HIM A LESSON!!!!"
+-> Talk about how fast the teacher went through equations
+    <<add_character -1 PhoebeHappy>>
+    Phoebe: "I know right!? That was sooo harrrddd!!! I nearly lost it there, and I swear staying up all night had nothing to do with it!"
+    She notices your expression is a bit flat. 
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "Hey, you look strange, what's wrong? And don't you dare lie to me, a cyclops' eye sees all!!"
+    <<add_character 0>>
+    You stay quiet, but she notices the threatening note in your hand, snatching it from you before you can hide it
+    <<add_character -1 PhoebeAnnoyed>>
+    As she reads it, her expression sours.
+    <<add_character -1 PhoebeAngry>>
+    Phoebe: "WHAT????? I'M GONNA GIVE HIM A LESSON!!!!"
+-> Shrug your shoulders
+    <<add_character -1 PhoebeNeutral>>
+    Phoebe: "Awww, c'mon! You look so pale for a hoo-man, tell me what's wrong??"
+    <<add_character 0>>
+    You keep telling her it's nothing, but her cyclops eye seems to see beyond your words.
+    You cave, handing her the note.
+    <<add_character -1 PhoebeAnnoyed>>
+    Phoebe: "Who threw this at you?"
+    <<add_character -1 PhoebeAngry>>
+    You gesture to the monsters behind you, and she frowns.
+<<add_character 0>>
+You beg Phoebe not to do anything, but she's beyond infuriated. 
+She walks right up to the group of monsters behind you, staring down the guy who smiled at you. 
+He puts on a friendly act towards Phoebe, but she isn't falling for it. 
+She knee kicks him in the crotch.
+<<add_character -1 BayleyKnocked>>
+Stranger: "GAAAAAAAAAAAAAHHHHHHHH!!!!!!"
+<<add_character 0>>
+The whole room goes quiet.
+<<add_character -1 BayleyAngry>>
+Stranger: "WHY DID YOU DO THAT!!??"
+<<add_character -1 BayleyKnocked>>
+He's barely able to hide a whimper while he wriggles around in pain.
+<<add_character -1 PhoebeAngryRight>>
+Phoebe: "WHY DID YOU THREATEN MY FRIEND!? MY HOO-MAN FRIEND!!!??? I'LL SHOW YOU A REAL MONSTER'S KICK!!!"
+<<add_character -1 BayleyKnocked>>
+Stranger: "NO! STOP!! I JUST SMILED AT THEM… I THOUGHT THEY WERE CUTE, OK?"
+<<add_character -1 PhoebeAngryRight>>
+Phoebe: "OH YEAH?? THEN WHO THREW THIS PAPER AT THEM!!!???"
+<<add_character 0>>
+Someone steps forward from the crowd- he wasn't very tall, but he had a dreadful aura that made you freeze up on the spot.
+<<add_character -1 SiegfriedNeutral>>
+ColdGuy: "I did."
+His voice was cold- it sent shivers down your spine.
+<<add_character 0>>
+Phoebe turns to look at who spoke, but even she seemed to freeze in fear when she realised who had spoken.
+<<add_character -1 SiegfriedNeutral>>
+ColdGuy: "How pitiful, defending a human..."
+<<add_character 0>>
+The guy steps closer to Phoebe, glaring at her, then at the monster she kicked.
+<<add_character -1 SiegfriedNeutral>>
+ColdGuy: "You two bring shame to all monsters. If you like the human so much, why don't we treat you like one?"
+<<add_character 0>>
+The small crowd of monsters seem to be siding with this scary guy, growling and snarling at Phoebe and the stranger as they begin to surround them.
+You gotta do something!
+
+-> Stand up, if they are gonna hit someone, it's gonna be you!
+    Casey: "Hey onion head! It's me you want, right? Leave them out of it!"
+-> Try to solve it diplomatically.
+    Casey: "Hey, let's all calm down for a second. If you've got a problem with me, we can discuss it, right?"
+-> Hit the scary guy with your book, maybe the distraction can help you escape!
+    You throw your textbook, hitting him in the back of his head. He rubs the back of his head, slowly turning to snarl at you.
+    Somehow, he became even scarier…
+Everyone looks at you, they ALL seem pissed off. You start to back away, but the crowd is slowly closing in on you. 
+<<add_character -1 PhoebeAngry>>
+Phoebe: "RUN!!!"
+<<add_character 0>>
+You do as Phoebe says, making a break for the door as you hear everyone chasing after you. 
+<<jump Chase1>>
+===
+title: Chase1
+---
+<<jump Ruins1>>
+===
+title: Ruins1
+---
+<<change_background -1 Ruins>>
+You reach some kind of restricted area, after jumping the letter an expansive wave knocks the thugs down, keeping them out of the area.
+Casey: "What was that?!" You gasp, completely breathless.
+<<add_character -1 AlbatrosNeutral>>
+Ghost: "I see you finally arrived."
+A ghostly figure slowly appears in front of you.
+<<add_character 0>>
+Seeing the ghost itself isn't what scares you the most- you saw a lot of ghosts when you were little. 
+Even though you hadn't seen any since your parents took you to see a priest that did some chanting for you when you were little
+You were always acutely aware of when the deceased were nearby…
+No, it wasn't seeing the ghost that scared you- but that it looked human!
+<<add_character -1 AlbatrosNeutral>>
+-> "What!? Who are you!?"
+    Albatros: "I'm the lingering spirit of one of the founders... Albatros."
+-> "Did you make that shockwave thing? Thank you!"
+    Albatros: "Think naught of it. My name is Albatros."
+-> "Whassup, dawg?"
+    Albatros: "Salutations, 'dawg.' Please, call me Albatros." 
+Albatros: "It's been a long time since anyone wandered to this side of the castle… I haven't seen one of your kind in years."
+-> "Well, I was running for my life from this scary looking guy and… things happened."
+    Albatros:"Ah, yes... the Krölin... they pride themselves on being the cast of Vamppires
+    Albatros: Alas, they are utterly classist. It's a shame that they're also the richest of families attending the school
+    Albatros: They practically fund the whole college themselves!
+-> "I just felt like running with the devil, you know, like that song!"
+    <<add_character -1 AlbatrosHappy>>
+    Albatros: "Oh yes, I love that song!"
+    <<add_character -1 AlbatrosNeutral>>
+-> "It's been a long time since I've seen a ghost…"
+    Albatros: "I could say the same- about being seen, that is. 
+    Albatros: No race of monsters that attend this college seem to possess the ability…
+    Albatros: One reason that no one comes to this side of the castle is that it's off limits.
+    Albatros: Though, sometimes, we see the Principal come here for vesperum balneum." 
+    You didn't catch that last part, it seems to be in a language you don't understand.
+Casey: "So... How do I go back, Mr. Albatros?"
+Albatros: "Show me your schedule, I'll walk you back."
+<<add_character 0>>
+<<jump Corridor3>>
+===
+title: Corridor3
+---
+<<change_background -1 CorridorWindows>>
+You start your journey back to class, silently guided by the ghost. 
+A few times, he walked through a wall, before reappearing and excusing himself, taking a more physically possible route instead.
+Soon you see Phoebe and the guy she kicked, they were looking for you. 
+<<add_character -1 PhoebeHappy>>
+Phoebe: "CASEY!!" 
+She squeezes you tightly, lifting you up as though you were light as a feather.
+Phoebe: "DID THEY HURT YOU!!??"
+<<add_character 0>>
+You try to speak, but she's squeezing you too tightly. 
+<<add_character BayleyNeutral>>
+Stranger: "Put him down!" Yells the guy who Phoebe kicked.
+She finally puts you down, and you catch your breath.
+<<add_character -1 PhoebeHappyRight>>
+Phoebe: "SORRY!! Didn't mean to hurt you, but are you ok???"
+<<add_character 0>>
+You nod your head.
+<<add_character -1 PhoebeAnnoyedRight>>
+Phoebe: "Good, that asshole Krölin will pay for it next time, I SWEAR!!!!"
+<<add_character -1 BayleyNeutral>>
+The guy that she kicked clears his throat to get her attention.
+<<add_character -1 PhoebeNeutralRight>>
+Phoebe: "Right, this is Bayley. Even though his name sounds badass, he's actually cuddlier than a teddy bear!"
+<<add_character -1 BayleyNeutral>>
+Bayley: "Hey Casey, nice to meet you properly this time. We kinda started on the wrong foot, but I wanted to ask you guys to lunch, you seem cool!"
+<<add_character -1 PhoebeHappyRight>>
+Phoebe: "AAAAAWWWW YEAH BAYLEY, WE'LL SIT WITH YOU!!"
+<<add_character 0>>
+You're perplexed by the scene. Just a moment ago, they seemed like mortal enemies…
+<<add_character -1 Albatros>>
+You see Albatross laugh to himself and disappear, leaving you in their care.
+<<add_character 0>>
+They start dragging you to get lunch, and you know it's pointless to say no. 
+Besides, after all that running, you really could use a sandwich.
+<<jump Messhole2>>
+===
+title: Messhole2
+---
+<<change_background -1 Messhole>>
+You reach the mess hall and join the line. Apparently Bayley is the soccer team's superstar. 
+Soccer seems to be taken very seriously at this college, the monsters love it! 
+While you get your lunch, you notice people staring at you and quietly talking amongst themselves. 
+It's only to be expected, you tell yourself. A human in a monster school is bound to be noticed.
+You wait in line for your food while Bayley talks about soccer, it seems Phoebe also likes the sport. You look at the menu when it's your turn to order- the monsters here seem to have very European tastes!
+<<declare $IlPaninoVariable = false as bool>>
+-> "Il panino" Will make you feel like you're in Italy! (Contains garlic)
+    <<set $IlPaninoVariable to true>>
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "I'll go with the Frikadelle!"
+    <<add_character -1 PhoebeNeutralRight>>
+    Phoebe: "I'll go with the Croissant Combo"
+-> "Frikadelle" Hamburg arrived to your plate!
+    <<add_character -1 BayleyHappy>>
+    Bayley: "Now that's a good choice, make it two!"
+    <<add_character -1 PhoebeNeutralRight>>
+    Phoebe: "I'll go with the croissant!"
+-> "Croissant Combo'' Ever wanted to go to Paris? Now's your chance!
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "Knew you had it in you, Casey! One for me as well please."
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "I'll go with the Frikadelle!"
+<<add_character 0>>
+"Coming right up!"
+
+The three of you take a seat together and start eating.
+
+-> So what're you lot studying?
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "I'm into agronomic engineering!"
+    <<add_character -1 PhoebeNeutralRight>>
+    Phoebe: "Since we know way more about it than hoo-mans, we also have to study astronomy to know how the moon and other celestial corps will affect the harvest..."
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "And with this eye, I can do it without a telescope!!!!"
+    <<add_character 0>>
+    You can't tell if she's joking or not, she's as over excited as usual…
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "I'm just here on a soccer scholarship, I was the best in my high school!"
+    Bayley: "But, I do like learning about architecture..."
+    <<add_character -1 BayleyHappy>>
+    Bayley: "Who knows, I might become an architect after I retire from soccer!"
+    <<add_character 0>>
+-> So what's the deal with 'monster casts'?
+    Phoebe and Bayley look at each other cautiously before leaning in and talking in a hushed voice.
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "We don't really talk about it out loud, but… Since you're human, I guess we should explain."
+    <<add_character -1 PhoebeNeutralRight>>
+    Phoebe: "Casts are like, how old and powerful your family bloodline is."
+    Phoebe: "For example, Krolin is a word that's rumoured to date back to the original family of his kin."
+    Phoebe: "On the other hand, I'm very far removed from the main cyclops bloodline."
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "Its… stupid and senseless. I'm not from a good family either, most werewolves aren't."
+    Bayley: "We don't really use our family casts for work or study these days, so most of us monsters don't pay it any mind."
+    Bayley: "Vampires, however, you can bet they'll cling to it like moths to a flame…"
+-> Stay quiet and enjoy your lunch.
+
+Bayley: So, what're you gonna study, Casey? 
+
+-> Astrophysics, I hear professor May is awesome!
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "She's the best!!! I hope she takes the stage at Oktoberfest!"
+    <<add_character -1 BayleyHappy>>
+    Bayley: "Right?! I could listen to her solos all day…"
+-> I'm still deciding... Wouldn't want to lock myself into studying something I hate
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: Whatever you do, make sure your blood boils like hotdog salesman's water for it!!!
+    <<add_character -1 BayleyHappy>>
+    Bayley: Yeah, follow your heart. Mine has been pumping red hot blood ever since I first saw a soccer ball being kicked!
+-> Considering how fast you guys study, I'm probably gonna be stuck here forever…
+    <<add_character -1 PhoebeNeutralRight>>
+    Phoebe: "So hoo-man school is slower? Don't worry, we'll help you out!"
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "Even if you can't stay up all night, I'm sure you can pull it off!!!!"
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "That's... something not every monster race can do, so don't feel bad about it!"
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "Yes! You just need a little help from your friends!"
+<<add_character 0>>
+-> Do you guys ever sleep?
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "Yeah! Like twice a week!!!!"
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "I normally do each night... unless it's a full moon."
+    <<add_character -1 BayleyHappy>>
+    Bayley: "Then it's party time!"
+    <<add_character 0>>
+    Casey: "Party time?..."
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "We don't hunt people down if that's what you're asking. We just… act as if we were drunk."
+    <<add_character -1 BayleyHappy>>
+    Bayley: "Cause we are! On Moonlight!!!"
+    <<add_character -1 PhoebeHappyRight>>
+    Phoebe: "The full moon werewolf parties are savage! Savage as in SUPER DUPER FUN!!!!!"
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "If we get to steal some of that effervescent green stuff they keep in the back of the kitchen..."
+    <<add_character -1 BayleyHappy>>
+    Bayley: "we could make this year's Oktoberfest insane!!!"
+    <<add_character 0>>
+    Casey: "Yeah haha, maybe…"
+    You're not so sure yet...
+-> What is our next class?
+    <<add_character -1 PhoebeAnnoyedRight>>
+    Phoebe: "I think it's philosophy..."
+    <<add_character -1 BayleyAngry>>
+    Bayley: "Yeah, boring..."
+    <<add_character 0>>
+-> I actually like Philosophy
+    <<add_character -1 PhoebeHappy>>
+    Phoebe: "Great! Then you help us with it!"
+-> I might get to sleep in there instead
+    <<add_character -1 BayleyNeutral>>
+    Bayley: "You, me, everyone haha"
+<<add_character -1 PhoebeNeutralRight>>
+Phoebe: But look at the hour, we should get going!
+<<add_character -1 BayleyNeutral>>
+Bayley: "Yeah... we don't want to be late."
+<<add_character -1 BayleyHappy>>
+Bayley: "We won't be able to sleep if we can't get seats at the back of class."
+<<add_character 0>>
+<<jump MessholeBattle>>
+===
+title: MessholeBattle
+---
+When you get up from your table, Krolin and his thugs enter the mess hall.
+Everyone goes silent as he looks across the room, marching right up to your table as soon as he spots you.
+You see Phoebe and Bayley change their stance in the corner of your eye.
+Yet you don't get a chance to prepare before Krolin starts yelling at you.
+<<add_character -1 SiegfriedAnnoyed>>
+Krolin: "You think you're funny with your human tricks?"
+<<add_character -1 SiegfriedAngry>>
+Krolin: "Using MAGIC?" 
+Krolin: "When I'm done with you, you'll be wishing you stayed at home!"
+<<add_character -1 PhoebeAngryRight>>
+Phoebe: "LEAVE CASEY ALONE, OR YOU'LL HAVE TO DEAL WITH ME, PUNK!!"
+Krolin snarls at Phoebe, but Bayley steps forward.
+<<add_character -1 BayleyAngryRight>>
+Bayley: "Cut the crap! You're not cool cause you bully the new student, and for what?"
+Bayley: "Cause you're racist? You should be ashamed!"
+<<add_character 0>>
+Bayley's fangs look bigger, and the nails on his hands start to turn into claws.
+Phoebe, on the other hand, seems to be growing buffer by the second.
+They're not mucking around anymore.
+Krolin lets go of you, baring his fangs while his two mates turn into zombies.
+Everyone in the mess hall surrounds you… if there's gonna be a fight, they all want to see.
+Bayley and Phoebe are busy with their opponents, leaving you against the Krolin...
+In the blink of an eye, the vampire is already in your face…
+
+<<if $IlPaninoVariable is true>>
+-> Wait... you ate garlic... maybe you could breathe in his face?
+    <<add_character -1 SiegfriedGarlic>>
+    The vampire's eyes turn red, and he covers his face in pain. It's your chance to...
+    <<add_character 0>>
+    -> Run
+    <<jump Run>>
+    -> Fight back
+    <<jump FightBack>>
+-> Fuck this, time for the punches
+    You try to punch him, but he stops the fist mid-flight, twisting your arm effortlessly
+    Leaving you in both excruciating pain and a crappy fighting position...
+    -> Punch with the other hand
+        You punch, and he stops that one too...
+        -> Kick in the groin
+            You kick him in the groin, hard. He lets out an ear piercing shriek as he lets you go, holding himself in pain. 
+            Now's your chance…
+            -> Run
+            <<jump Run>>
+            -> Fight back
+            <<jump FightBack>>
+        -> Headbutt
+            You smash him straight in the nose, stunning him! As he grabs his face, you...
+            -> Run
+            <<jump Run>>
+            -> Fight back
+            <<jump FightBack>>
+    -> Do an epic judo move, where you continue the twist and end up grabbing him by the neck!
+        Guess those classes are finally paying off, you've got a hold of the vampire!
+        -> Push him and run
+        -> Time to throw him to the ground and finish this!
+-> Back off, win some space, it's a freakin' vampire!!!!
+    You try to run but he's faster, he makes you trip and fall to the ground.
+    He looks like he's gonna pounce…
+    -> You roll and grab a plate to smash over his head
+         You manage to roll and attack with the plate, yet it only makes him angrier
+         -> Keep grabbing stuff from the floor and smashing him
+         Somehow you found a half eaten Il Panino in the ground.
+         <<add_character -1 SiegfriedGarlic>>
+         After throwing it, the garlic makes his eyes red and he screams in pain... It's your time to...
+            ->Run
+            <<jump Run>>
+            ->Fight back
+            <<jump FightBack>>
+        -> Time to run again
+        You try to run but he's faster, yet this time he trips to the ground, leaving you ready to...
+            -> Run
+            <<jump Run>>
+            -> Fight back
+            <<jump FightBack>>
+    -> You kick from the floor
+        The kick lands in his stomach and... 
+        ... you push him over a table, with lots of food falling over him
+        -> Run
+        <<jump Run>>
+        -> Fight back 
+        <<jump FightBack>>
+
+<<elseif $IlPaninoVariable is false>>
+-> Fuck this, time for the punches
+    You try to punch him, but he stops the fist mid-flight, twisting your arm effortlessly
+    Leaving you in both excruciating pain and a crappy fighting position...
+    -> Punch with the other hand
+        You punch, and he stops that one too...
+        -> Kick in the groin
+            You kick him in the groin, hard. He lets out an ear piercing shriek as he lets you go, holding himself in pain. 
+            Now's your chance…
+            -> Run
+            <<jump Run>>
+            -> Fight back
+            <<jump FightBack>>
+        -> Headbutt
+            You smash him straight in the nose, stunning him! As he grabs his face, you...
+            -> Run
+            <<jump Run>>
+            -> Fight back
+            <<jump FightBack>>
+    -> Do an epic judo move, where you continue the twist and end up grabbing him by the neck!
+         Guess those classes are finally paying off, you've got a hold of the vampire!
+         -> Push him and run
+         <<jump Run>>
+        -> Time to throw him to the ground and finish this!
+        <<jump FightBack>>
+-> Back off, win some space, it's a freakin' vampire!!!!
+    You try to run but he's faster, he makes you trip and fall to the ground.
+    He looks like he's gonna pounce…
+    -> You roll and grab a plate to smash over his head
+        You manage to roll and attack with the plate, yet it only makes him angrier
+        -> Keep grabbing stuff from the floor and smashing him
+        Somehow you found a half eaten Il Panino in the ground.
+        <<set $IlPaninoVariable to true>>
+        <<add_character -1 SiegfriedGarlic>>
+        After throwing it, the garlic makes his eyes red and he screams in pain... It's your time to...
+        <<add_character 0>>
+            ->Run
+            <<jump Run>>
+            ->Fight back
+            <<jump FightBack>>
+        -> Time to run again
+            You try to run but he's faster, yet this time he trips to the ground, leaving you ready to...
+            -> Run
+            <<jump Run>>
+            -> Fight back
+            <<jump FightBack>>
+    -> You kick from the floor
+        The kick lands in his stomach and... 
+        ... you push him over a table, with lots of food falling over him
+        -> Run
+        <<jump Run>>
+        -> Fight back
+        <<jump FightBack>>
+<<endif>>
+===
+title: Run
+---
+You begin to run, only to crash against the Principal...
+<<add_character -1 PrincipalAngry>>
+Principal: THAT'S ENOUGH, ALL SIX OF YOU, TO MY OFFICE AT ONCE!
+<<jump PrincpalsOffice2>>
+===
+title: FightBack
+---
+You are about to make him pay when the Principal's voice echoes in the room...
+<<add_character -1 PrincipalAngry>>
+Principal: THAT'S ENOUGH, ALL SIX OF YOU, TO MY OFFICE AT ONCE!
+<<jump PrincpalsOffice2>>
+===
+title: PrincipalsOffice2
+---
+<<add_character 0>>
+The six of you sit in the Principal's office. The others are back to their 'normal' forms.
+<<if $IlPaninoVariable is true>>
+Krolin's eyes are still red from the garlic, even though he's trying to pretend nothing is different.
+<<endif>>
+The goat-man is infuriated- you had a feeling that deep down he had a temper.
+And now, you had a front row seat to the fireworks.
+<<add_character -1 PrincipalAngry>>
+Principal: WHERE DO YOU THINK YOU ARE? THIS IS A COLLEGE, NOT HIGHSCHOOL, NOT EVEN AN ELEMENTARY SCHOOL.
+Principal: A FIGHT? AT THE MESS HALL? THROWING GOOD FOOD AWAY? I SHOULD EXPEL YOU ALL. RIGHT. NOW.
+<<add_character 0>>
+He continues to rant about it, quoting an old book in his hands that seems to be the statute of the college.
+<<add_character -1 PrincipalAngry>>
+Principal: ...ARTICLE 44, IF THE STUDENT BREAKS A WINDOW, THEY'LL LOSE TWO FINGERS... ARTICLE 78, A BROKEN TABLE, ONE FOOT...
+<<add_character 0>>
+The rules are scary as hell, although the zombie guys don't seem so phased... maybe they can grow new limbs?
+The Principal sighs, slamming shut his book.
+<<add_character -1 PrincipalNeutral>>
+Principal: You're lucky I'm not a stickler for tradition, otherwise I'd have you all in jars with the amount of rules you've broken.
+Principal: These rules are almost 5 centuries old, they're not much use to us today. As we have a human here, every rule needs to be adapted.
+<<add_character 0>>
+You're inwardly relieved, and everyone else in the room seems to be too.
+<<add_character -1 PrincipalNeutral>>
+Principal: Alright, you 4, straight to your dorms. You will be confined to quarters for the rest of the day.
+Principal: Casey, Siegfried, you remain here.
+<<add_character 0>>
+Siegfried? Seems like that's Krolin's first name, as he is the only one that doesn't get up to leave.
+<<add_character -1 PrincipalNeutral>>
+Principal: "According to your friends, the problem is between you two."
+Principal: "I can adapt the rules for your friends and give them a few months of community service; but as you two are the instigators..."
+Principal: "You leave me no choice but to expel you both."
+<<add_character -1 SiegfriedAngryRight>>
+Siegfried: WHAT?! EXPELLING ME FOR PUNISHING A HUMAN?! IS THIS SOME KIND OF JOKE?
+<<add_character 0>>
+The Principal doesn't hold back, standing up and slamming his hands on his desk.
+<<add_character -1 PrincipalAngry>>
+Principal: "Cut the crap! Your parents have already been notified, and they authorised me to do with you what I will."
+Principal: "Such blatant racism will NOT be tolerated"
+Principal: "And you would do best to start behaving yourself before I match your old fashioned views with some old fashioned punishments."
+<<add_character 0>>
+Siegried only lowers his head in shock. It seems that no one's ever spoken to him so harshly…
+<<add_character -1 PrincipalAngry>>
+Principal: "And you, Casey! Using Magic to harass other students?"
+Principal: "This campus has an explicit ban against such practices- which you would have read and agreed to when signing your admission!"
+<<add_character 0>>
+-> "But I didn't do anything!"
+<<add_character -1 PrincipalAngry>>
+Principal: "So I can add lying to your case? Along with trespassing to forbidden areas of the castle?"
+Principal: "You should have come to me for help if you were having trouble with your classmates."
+-> "Krolin and his goonies would have hunted down and murdered me if I came to you!"
+<<add_character -1 SiegfriedAngryRight>>
+Siegfried: "Nonsense! We just wanted to explain the rules and YOU didn't want to listen!"
+<<add_character 0>>
+    -> Kick Siegfried for being an idiot
+         You try to kick him but the Principal stops you.
+         <<add_character -1 PrincipalAngry>>
+          Principal: "WHAT ARE YOU DOING?!!! CUT IT OUT ALREADY!!!"
+    -> "Yeah sure, nice joke…"
+        <<add_character -1 PrincipalAngry>>
+        Principal: "ENOUGH!!"
+-> "I didn't perform any magic, the spirits did it!"
+    <<add_character -1 PrincipalNeutral>>
+    Principal: "Spirits?"
+    <<add_character -1 SiegfriedAnnoyedRight>>
+    Siegfried: "Yeah sure, as if a pitiful human like you could see them"
+    <<add_character 0>>
+   -> "I can! And his name is Albatros- I'm sure he can explain everything"
+       <<add_character -1 PrincipalNeutral>>
+       The Principal just stares at you, clearly annoyed.
+   -> "Forget it, you won't believe me…"
+<<add_character -1 PrincipalNeutral>>
+Principal: "As I see it, the only way that I could change my mind on expulsion is if the two of you can PROVE to me that you can work together."
+Both: "WHAT?!"
+Principal: "Oktoberfest is at the end of the week, and the current committee is… half hearted at best."
+Principal: "I'm putting you two in charge of celebrations, if you succeed, we can negotiate further punishments." 
+Principal: "Another fight, and you'll be expelled on the spot. Is that understood?"
+You both stay quiet.
+<<add_character -1 PrincipalAngry>>
+Principal: "IS THAT UNDERSTOOD?"
+Both: "Yes sir…"
+<<add_character 0>>
+<<change_background -1 CorridorWindows>>
+You leave the Principal's office, hearing the door slam shut behind you.
+Suddenly, Siegfried gets right up in your face.
+<<add_character -1 SiegfriedAnnoyed>>
+Siegfried: "Listen to me you little twat, you better pull your weight with this."
+Siegfried: "I'll pretend that you're worthy of attending our school in front of the Principal, but don't forget that I'm in this mess because of you."
+-> "Fuck you, onionhead"
+-> "You pull your weight, and I'll pretend you totally didn't chicken out at the mess hall"
+-> "Don't make me bring the back the garlic"
+<<add_character -1 SiegfriedAngry>>
+Siegfried raises his fist to punch you, but he stops himself midway.
+<<add_character -1 SiegfriedAnnoyed>>
+Siegfried: "Good try, but it won't work. Let's get this over and done with- and fast."
+<<add_character 0>>
+Casey: "Right, the less time we have to spend together, the better…"
+Casey: "Where do we start with Oktoberfest?"
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "I heard the committee wanted to host Oktoberfest in the gardens, we should go there- unless you had a better idea."
+<<add_character 0>>
+You remember Bayley mentioning something about booze, maybe he could help with Oktoberfest too?
+
+Where should you begin?:
+-> Garden
+<<jump Garden>>
+-> Bayley's booze
+<<jump Booze>>
+-> Try to find something else
+    You begin to ponder, only for Siegfried to urge you to choose.
+    You can't think of anything else right now
+    -> Garden
+    <<jump Garden>>
+    -> Bayley's Booze
+    <<jump Booze>>
+===
+title: LastQuest
+---
+<<change_background -1 Garden>>
+Casey: "So, we got the garden looking good, and the booze for the party… Now we need the entertainment!"
+<<add_character -1 PhoebeHappyRight>>
+Phoebe: "Oh, oh! I know this one... we need-"
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "Professor May."
+<<add_character -1 0>>
+Siegfried having good taste? You didn't see that coming.
+Casey: "...actually, yes. Everyone will come if she plays."
+<<add_character -1 PhoebeNeutralRight>>
+Phoebe: "But she's not around here lately..."
+<<add_character -1 BayleyNeutral>>
+Bayley: "I heard she's on vacation this month..."
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "Nonsense. She's here, probably exploring the catacombs again."
+-> How would you know that?
+    Siegfried: "She loves to dig the secrets of the unknown as much as looking to the stars."
+    Siegfried: "Everyone knows that, except well... Fresh meat like you."
+-> That does sound like Prof. May
+    Siegfried: "Seems like you did your homework this time, human."
+-> Then we should go and find her!
+    Siegfried: "For once, I agree with you."
+<<add_character 0>>
+Casey: "So, who wants to come to the catacombs with us?"
+<<add_character -1 BayleyHappy>>
+Bayley: "Oh! Oh! We will!"
+<<add_character -1 PhoebeAnnoyedRight>>
+Phoebe: "But we can't gooooo, we still have to do community service!!!"
+<<add_character -1 BayleyAnnoyed>>
+Bayley: "Aw come on! I wanted to explore those ruins so baaaad"
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "The zombie twins have the same problem..."
+<<add_character -1 SiegfriedAnnoyed>>
+Siegfried: "Guess it's just me and you... agh, human."
+<<add_character 0>>
+Casey: "The feeling is mutual, onionhead."
+<<change_background -1 Ruins>>
+You two take off to the ruins. As you walk, Albatros begins to walk with you, silent for now.
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "There it is, the catacombs entrance."
+<<add_character 0>>
+Casey: "You come here often, don't you?"
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "My family constructed this castle, I know the entire area just through tales from my childhood."
+-> Right cause you're like super old
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "I'm only 120, twat."
+-> Your family this, your family that...
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "Who do you think sponsors people like you or your friends? All the poor who can't afford this place, huh?"
+    Siegfried: "MY family! Tch, have some respect…"
+-> Cool.
+<<add_character 0>>
+The pantheon's doors open by themselves. You realize at this point that Albatros moved a ghostly mechanism to open it...
+You walk through the doorway to a room filled with cobwebs and dust. Marble floors stretch out further than you can see...
+Rows upon rows of columns and coffins- exactly what you'd expect from a castle this old.
+Siegfried grabs a torch nonchalantly, and a trap door opens- revealing a set of stairs winding down into the dark.
+Albatros looks genuinely impressed that he knew that
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "Come on human, we don't have all night."
+-> Let's go
+-> Wow you actually know something
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "More than you'll ever know, brickhead."
+-> You just go down without talking
+<<add_character 0>>
+<<change_background -1 CorridorNoWindows>>
+The further down you go, the darker and more humid it gets. The cobwebs burn as Siegfried nudges them with the torch to push them aside. 
+Still, despite that, there are still so many that you have to keep moving them by hand. 
+You hear both your footsteps ring out on the old, stone stairs as you begin to breathe heavier. The air is getting thicker, making it difficult for you to breathe.
+Of course, Siegfried doesn't need to breathe- for all you know, it's quite handy to have a Vampire by your side for this adventure.
+<<change_background -1 EmptyChamber>>
+You finish descending the staircase, standing in a dank room. You can see so many old and broken tombs, with skeletons of various races left strewn about across the walls and floor.
+-> Touch one
+    You grab a skull, but it starts to disintegrate in your hand. A hoard of spiders creep out and begin to climb all over you!
+    -> "AAAAAAAAHHHHH"
+    -> "AAAAAAAAAAAAAAAAAHHHHHHHHHHH"
+    -> Got this under contr... "AAAAAAAAAAAAAAAAAAAHHHHHHHHH"
+      You roll over the floor screaming until you feel they are all gone. This is the first and only time you've heard Siegfried laugh.
+-> Don't touch a thing
+     You keep walking behind Siegfried, focused on the path ahead. You see lots of spiders crawling through decaying sets of bones... Glad you didn't grab any.
+-> "Are there any traps around here?"
+    <<add_character -1 SiegfriedNeutral>>
+     Siegfried: "Nothing to worry about, just poisonous darts and the like…"
+    <<add_character 0>>
+     Casey: "..."
+You both reach a set of bifurcated stairs...
+<<add_character -1 SiegfriedNeutral>>
+Siegfried:"We need to go left."
+-> Do as Siegfried says
+-> "How do you know that?"
+    Siegfried: "Childhood tales, you twat. I told you already, I know the area."
+    <<add_character 0>>
+    -> Do as Siegfried says
+    -> "Let's go to the right"
+        <<add_character -1 SiegfriedAnnoyed>>
+        Siegfried: "So you still don't trust me, huh? Good luck falling into a pot of acid then."
+        <<add_character 0>>
+        Albatros looks at you, shaking his head and finally speaking
+        <<add_character -1 AlbatrosNeutral>>
+        Albatros: "The Krolin isn't lying. You better learn to trust each other or none of you will get out of here alive."
+        <<add_character 0>>
+        Casey: "Alright alright... to the left it is"
+-> "Let's go to the right"
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "So you still don't trust me, huh? Good luck falling into a pot of acid then."
+    <<add_character 0>>
+    Albatros looks at you, shaking his head and finally speaking
+    <<add_character -1 AlbatrosNeutral>>
+    Albatros: "The Krolin isn't lying. You better learn to trust each other or none of you will get out of here alive."
+    <<add_character 0>>
+    Casey: "Alright alright... to the left it is"
+<<add_character 0>>
+The catacombs begin to wind into long, snake-like paths, going up and down, left and right.
+There's a few more bifurcated staircases, you just let Siegfried lead the way. 
+Finally, you come across an open chamber.
+Siegfried seems uneasy
+-> Please tell me you didn't get us lost…
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "Of course I didn't!"
+    <<add_character -1 SiegfriedNeutral>>
+    Siegfried: "This is the oval chamber, where one of the main vampire families rest…"
+    <<add_character 0>>
+    He seems nervous while saying that.
+    Casey: "Then why are you sweating?"
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "The torch is too hot, that's all..."
+    <<add_character 0>>
+    Albatros shakes his head...
+-> What is it now?
+    <<add_character -1 SiegfriedNeutral>>
+    Siegfried: "Huh? Nothing!"
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "What, you wanna go home already?"
+    <<add_character 0>>
+    Casey: "No, it's just you're sweating as much as me. Is it ok for Vampires to sweat?"
+    <<add_character -1 SiegfriedAnnoyed>>
+    Siegfried: "Don't place your fear on me, human."
+    <<add_character 0>>
+    Albatros shakes his head...
+-> Are we going to die?
+    <<add_character -1 SiegfriedNeutral>>
+    Siegfried: "Only you, I'm already undead."
+    <<add_character -1 0>>
+    Casey: "But can't you… re-dead?"
+    <<add_character -1 SiegfriedNeutral>>
+    Siegfried: "With this much darkness, I doubt it."
+    <<add_character 0>>
+    Siegfried sounds as quippy as usual, but you notice how much he's sweating. He clears his throat, shaking a little before moving onward.
+    Albatros shakes his head...
+
+You follow him, until you both bump into a big, enormously sticky column… 
+Wait… It's not a column… It's…
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "Oh no…"
+<<add_character 0>>
+Casey: "...is this?"
+<<add_character -1 SiegfriedAnnoyed>>
+Siegfried: "Spiderweb."
+<<add_character 0>>
+Casey: "Are we-"
+<<add_character -1 SiegfriedAngry>>
+Siegfried: "-run, human. RUN!"
+<<add_character 0>>
+A huge red eye opens. Another red eye opens. Hundreds of red eyes open. Lots of enormous spiders begin to run straight towards you two.
+<<run scene>>
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "Ough... that was close. You don't run too bad, for a human."
+-> "You don't do so bad yourself."
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried seems to smile a little.
+-> "Haha, you made me practice!"
+    <<add_character -1 SiegfriedSad>>
+    Siegfried: "Yeah... sorry about that."
+-> "I'd run a marathon if you put a spider in front of me!"
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried: "Ha... spiders for you, garlic for me."
+<<add_character 0>>
+Seems like you two fell into a chamber. It looks like some kind of ancient... laboratory?
+There's alchemist equipment set up on old wooden tables, a few glass flasks broken here and there...
+Casey: "What is this?"
+<<add_character -1 SiegfriedHappy>>
+Siegfried: "Oh my... we're at the ancient knowledge lair! Before the university was built..."
+<<add_character -1 AlbatrosNeutral>>
+Albatros: In unison with Siegfried: "A sect of the most talented monsters worked here, in secret, in pursuit of true knowledge to save the world..."
+<<add_character 0>>
+Casey: "And your family founded it, right?"
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "They... were a part of it. All casts were… equals"
+<<add_character 0>>
+Casey: "And after this, they invested in the university?"
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "...yes. After."
+<<add_character 0>>
+He seems to keep some information to himself, looking over old equipment absentmindedly.
+You look over to Albatros, who is also lost in thought- but he doesn't seem pleased by the memories he has with this place.
+You begin to walk across the different rooms in the lair, finding books that were mostly disintegrated with age, research equipment thrown haphazardly around, and old, rotting clothes with skeletons still inside.
+Casey: "What... happened here?"
+<<add_character -1 SiegfriedSad>>
+Siegfried: "..."
+Albatros: "Humans..."
+<<add_character 0>>
+Casey: "...humans?"
+Siegfried stops walking, but doesn't look at you. He sounds serious, the most serious you've ever heard him.
+<<add_character -1 SiegfriedSad>>
+Siegfried: "...yes. The humans... they found this place… Humans are greedy, power hungry."
+Siegfried: "They wanted the knowledge we had- they wanted to further the world in their favour."
+Siegfreid: "All the human advances… science… medicine… technological advances… it was all based on what monsters discovered here."
+<<add_character 0>>
+Casey: "So then… the skeletons…?
+<<add_character -1 SiegfriedSad>>
+Siegfried: "...My family were one of the few to survive the battle."
+<<add_character 0>>
+All of a sudden, you start to see the hate he held towards you, and understand it.
+All this pain, marinating for over 500 years, all concentrated towards you as soon as Siegfried saw you in his class…
+Casey: "...how did they-"
+Albatros begins to talk, manifesting himself in a way Siegfried is also able to see.
+Albatros: "I'm affraid, that one was on me"
+<<add_character 0>>
+Siegfried jumps on his feet at the sight of the unholy Albatros.
+<<add_character -1 SiegfriedAngry>>
+Siegfried: "You... you're the casted out! The reason monsters were discovered in the first place! You treaterous..."
+<<add_character 0>>
+-> Stop him at once, Albatros should explain himself
+    Casey: "Hey! That's enought. He saved me from you in the first place, so let him explain himself before you prejudge him too! "
+-> Let it play out, you just don't know what to believe
+    Albatros remains silent, as Siegfried nearly spits acid out of his mouth.
+<<add_character -1 AlbatrosNeutral>>
+Albatros: "The hate of generations runs through your mouth... yet, you had experience none of it."
+<<add_character 0>>
+Siegfried is about to counter that, only to realize he had no way to reply to it.
+<<add_character -1 AlbatrosSad>>
+Albatros: "I only have myself to blame about that, child of the Krolin. Since the past 500 years, every single day has been lived, in life and death, to remember that damned day."
+-> "What happened then?"
+-> Remain silent
+<<add_character -1 AlbatrosNeutral>>
+Albatros: "I was amongst the most prolific scientists of the time, along with many others, including your antecesor, Krolin the third."
+Albatros: "My cast, the closest to humans, possesed the ability to see beyond the barriers of normal senses. I could sense the planets moving, as well as the earth spinning."
+<<add_character -1 AlbatrosSad>>
+Albatros: "Yet, for as far as I could see, I lost sight of what was right under my nose... I fell for a human woman."
+<<add_character -1 AlbatrosNeutral>>
+Albatros: "I became sloppy, began to forget to cover my tracks, even with my looks, Townsfolk grew suspicious, following me in the shadows everywhere I went…"
+<<add_character -1 AlbatrosSad>>
+Albatros: "I was a fool… I didn't realise until too late. They saw me conversing with Krolin, and ran for reinforcement."
+Albatros: "In merely a few hours, there were hundreds, thousands of humans, all marching to this lair…"
+<<add_character -1 KrolinNeutral>>
+An old vampiric ghost appears, Siegfried can't believe his eyes."
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: "Grand…"
+<<add_character -1 KrolinNeutral>>
+Krolin: "They attacked us suddenly, too suddenly for us all to escape. Even with our great powers, we had an absurd amount of casualties due to the sheer number of humans…
+Krolin: "They took everything they could, every life they could… And ran when they realized they couldn't win."
+<<add_character -1 Ghosts>>
+More ghosts appear, you're unable to distinguish from which one each voice comes, as they are too many all together.
+Ghosts: "The ones who fell spoke from the beyond, while the survivors spoke while recovering from their wounds."
+Ghosts: "The loss we suffered was too great to ever allow it to happen again." We could have chased back the humans..."
+Ghosts: "But we knew that would only mean setting the entire world on fire. Violence would only bring more violence, a cycle that could never end."
+<<add_character -1 AlbatrosSad>>
+Albatros: "I was exiled from monster kind for my mistake…"
+<<add_character -1 AlbatrosNeutral>>
+Albatros: "I took my wife with me, we settled somewhere far away, where no one would ever suspect us…"
+<<add_character -1 Ghosts>>
+Ghosts: "And that was our first mistake. To deposit the wrath into a single vessel, to cast one of us out for an unintended mistake...
+Ghosts: "..one that at the time, we thought was on purpose..."
+<<add_character -1 KrolinSad>>
+Krolin: "We'll always be sorry for that. I was just as to blame for it as you were."
+Krolin: "I said it many times, but the decision had already been made by a vast mayority, even before anyone spoke up."
+<<add_character 0>>
+All of you fall silent, processing everything that was just said. Siegfried was the first to speak up.
+<<add_character -1 SiegfriedSad>>
+Siegfried: "So you weren't lying, you really could see the ghosts that none of us could"
+<<add_character 0>>
+Casey: "Yeah, I've always been able to. I don't know why"
+<<add_character -1 KrolinNeutral>>
+Krolin: "The blood of Albatros runs through your veins, demi-human. You have but a fraction of his power."
+<<add_character -1 AlbatrosNeutral>>
+Albatros: "I thought you knew that, Casey. The vision was my gift, the ability to see beyond life itself..."
+<<add_character -1 AlbatrosSad>>
+Albatros: "I just hope you learn to use it better than I did"
+Albatros: "...I should have never mixed with humans in the first place."
+<<add_character -1 KrolinNeutral>>
+Krolin: "Albatros, my old friend... you cannot blame yourself for following your heart."
+<<add_character -1 KrolinSad>>
+Krolin: "It's a shame other monsters didn't get it at that time"
+<<add_character -1 KrolinNeutral>>
+Krolin: "But now with Casey, maybe we can rejoin our human brethren in harmony…"
+<<add_character 0>>
+Casey: "So we've been disagreeing with each other..."
+<<add_character -1 SiegfriedSad>>
+Siegfried: "...for nothing."
+<<add_character -1 Ghosts>>
+The ghosts nod at you two.
+<<add_character 0>>
+Casey: "So that's why I got a letter then... because I'm part monster"
+<<add_character -1 KrolinNeutral>>
+Krolin: "The ghosts of this castle came to the conclusion that we should forgive Albatros, and let him join us as he once did."
+Krolin: "Along with that, we wanted his bloodline to know of their heritage, and join us at the college."
+<<add_character -1 KrolinSad>>
+Krolin: "We could only accept Albatros in spirit..."
+<<add_character -1 KrolinHappy>>
+Krolin: "But we can accept you in flesh- we made sure your application was successful, it was your birthright all along."
+<<add_character -1 SiegfriedSad>>
+Siegfried: "Casey... I'm... sorry. I was an idiot, I thought you were..."
+<<add_character 0>>
+-> "Don't worry, I get it now..."
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried smiles, nodding.
+-> "You were an asshole, but so was I."
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried nods, smirking.
+-> "...Don't worry about it, I accept your apology."
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried nods
+<<add_character 0>>
+You all hear a noise, someone, or something, is approaching you!
+???: "Ah, finally!!! Everyone shows themselves!"
+The ghosts turn around, only to see Professor May in the flesh, looking straight at them.
+<<add_character -1 May>>
+May: "I have like a dozen questions for each of you ghosts!"
+She then turns to you and Siegfried, smirking.
+May: "So you two drew them out of their hiding, huh? I owe you one, kiddos."
+You two look at each other, in complete awe!
+-> "Pro.... prof... professor.... M.... mmm... ay?!!!!"
+    May: "The one and only!"
+-> "Oh my god it's you!!!!"
+    May: Sure is!
+-> "Could you sign my book?"
+    Siegfried quickly kicks you.
+    <<add_character -1 SiegfriedNeutral>>
+    Siegfried: "No! Don't waste the favour on that!"
+<<add_character -1 May>>
+Prof. May lifts an eyebrow as she looks at you both.
+May: "Eager to cash in the favour, eh? What is it that you need, then?"
+<<add_character 0>>
+Casey: "We need an entertainment act for oktoberfest..."
+<<add_character -1 SiegfriedNeutral>>
+Siegfried: A"nd there's no one better than you to do it!"
+<<add_character 0>>
+She stares you down, the two of you worried that you've upset her. After a moment, she starts laughing.
+<<add_character -1 May>>
+May: "Hahahaha, it's been like 30 years since I last performed here!!! Sure, I'll give it a go, now scram so I can talk with these old farts."
+<<add_character 0>>
+As you two explode with excitement, the ghosts create a portal to send you to the entrance of the ruins. Professor May, on the other hand, stays to chat with the ghosts.
+<<change_background -1 Ruins>>
+-> "Guess you weren't so bad after all, Siegfried"
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried: "Same to you, Casey."
+-> "After all that, I might even be able to call you a friend oneday."
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried: "Ha, I'll only grant you that honour if you can learn to play soccer like the rest of us"
+-> "Guess we're off the hook, huh?"
+    <<add_character -1 SiegfriedHappy>>
+    Siegfried: "Yeah, well done, Hu... I mean, Casey."
+
+Siegfried: "Well, that's it then, I'll see you at the festival. Got a lot of studies to catch up on."
+<<add_character 0>>
+Casey: "Yeah, me too. What're you studying?"
+<<add_character -1 SiegfriedHappy>>
+Siegfried: "Medicine. I… didn't know why when I chose it, but now? I think I just want to help people out. What about you?"
+<<add_character 0>>
+Casey: "Ha, sounds like you figured it out. I guess Astrophysics for me. I mean, Prof. May is awesome, how could I not?"
+<<add_character -1 SiegfriedHappy>>
+Siegfried: "Haha, yeah, she is pretty great."
+<<add_character 0>>
+<<change_background -1 CorridorWindows>>
+The two of you linger in the hallway, you don't know what else to say.
+<<add_character -1 SiegfriedHappy>>
+Siegfried: "Well, see you around, Casey."
+<<add_character 0>>
+You wave goodbye to your new… Friend? Oktoberfest is only a few days away, and you need to get ready!
+===
